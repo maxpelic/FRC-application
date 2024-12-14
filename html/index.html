@@ -22,7 +22,7 @@
                 icon.src = json.icon;
                 weatherElement.append(icon);
                 const descriptionElement = document.createElement("p");
-                descriptionElement.textContent = json.description + "\nTemp: " + json.temp + "°F (feels like " + json.feels_like + ")\nHumidity: " + json.humidity + "%";
+                descriptionElement.textContent = json.description + "\nTemp: " + json.temp + "F (feels like " + json.feels_like + ")\nHumidity: " + json.humidity + "%";
                 descriptionElement.innerHTML = descriptionElement.innerHTML.replace(/\n/g, "<br>");
                 weatherElement.append(descriptionElement);
             }
