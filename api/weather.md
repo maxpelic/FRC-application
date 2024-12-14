@@ -1,4 +1,4 @@
-## Weather API endpoint
+# Weather API endpoint
 Endpoint: http://localhost:8888/weather.php (GET)
 
 Query Parameters:

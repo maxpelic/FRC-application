@@ -6,37 +6,37 @@ Read /api/README.md for the API documentation
 
 (this would not normally be included in a repository with environment secrets, but since these are free API keys and you'll need them to test the code I included them here)
 
-SetEnv geoapi_key b7ac32f76bee4abdb3709a5a9eab833b
-SetEnv weather_key 8d7e74e072bdfe8d80d694a44f010812
+    SetEnv geoapi_key b7ac32f76bee4abdb3709a5a9eab833b
+    SetEnv weather_key 8d7e74e072bdfe8d80d694a44f010812
 
-Listen *:8888
-<VirtualHost *:8888>
-        DocumentRoot "/site/root/api/"
-        ServerName localhost
+    Listen *:8888
+    <VirtualHost *:8888>
+            DocumentRoot "/site/root/api/"
+            ServerName localhost
 
-        <Directory "/site/root/api/">
-                Options +Indexes +FollowSymLinks
-                AllowOverride All
-                Order allow,deny
-                Allow from all
-                Require all granted
-        </Directory>
-</VirtualHost>
+            <Directory "/site/root/api/">
+                    Options +Indexes +FollowSymLinks
+                    AllowOverride All
+                    Order allow,deny
+                    Allow from all
+                    Require all granted
+            </Directory>
+    </VirtualHost>
 
 
-Listen *:8889
-<VirtualHost *:8889>
-        DocumentRoot "/site/root/html/"
-        ServerName localhost
+    Listen *:8889
+    <VirtualHost *:8889>
+            DocumentRoot "/site/root/html/"
+            ServerName localhost
 
-        <Directory "/site/root/html/">
-                Options +Indexes +FollowSymLinks
-                AllowOverride All
-                Order allow,deny
-                Allow from all
-                Require all granted
-        </Directory>
-</VirtualHost>  
+            <Directory "/site/root/html/">
+                    Options +Indexes +FollowSymLinks
+                    AllowOverride All
+                    Order allow,deny
+                    Allow from all
+                    Require all granted
+            </Directory>
+    </VirtualHost>  
 
 
 #Assignment Description
