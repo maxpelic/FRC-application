@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FRC Application Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const getWeather = async () => {
+            const weatherElement = document.getElementById("weather");
+            weatherElement.textContent = "Fetching weather data, please wait...";
+            const city = encodeURIComponent(document.getElementById("city").value);
+            const state = encodeURIComponent(document.getElementById("state").value);
+            const url = `http://localhost:8888/weather.php?city=${city}&state=${state}`;
+            const response = await fetch(url);
+            const json = await response.json();
+            if(json.error){
+                weatherElement.textContent = json.error;
+                weatherElement.style.color = "red";
+            } else {
+                weatherElement.textContent = "";
+                weatherElement.style.color = "black";
+                const icon = document.createElement("img");
+                icon.src = json.icon;
+                weatherElement.append(icon);
+                const descriptionElement = document.createElement("p");
+                descriptionElement.textContent = json.description + "\nTemp: " + json.temp + "°F (feels like " + json.feels_like + ")\nHumidity: " + json.humidity + "%";
+                descriptionElement.innerHTML = descriptionElement.innerHTML.replace(/\n/g, "<br>");
+                weatherElement.append(descriptionElement);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Weather API</h1>
+    <label>
+        <input type="text" id="city" placeholder="City">
+    </label>
+    <label>
+        <input type="text" id="state" placeholder="State">
+    </labe>
+    <button onclick="getWeather()">Get Weather</button>
+    <p id="weather">Result will show up here</p>
+</body>
+</html>
