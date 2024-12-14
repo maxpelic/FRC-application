@@ -6,6 +6,7 @@ Query Parameters:
 - state: State code or name to the weather for
 
 Returns:
+
     {
         "icon": "http://openweathermap.org/img/w/ ... .png",
         // URL to an icon representing the current weather
