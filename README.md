@@ -2,7 +2,7 @@
 
 Read /api/README.md for the API documentation
 
-##Server Setup
+## Server Setup
 
 (this would not normally be included in a repository with environment secrets, but since these are free API keys and you'll need them to test the code I included them here)
 
