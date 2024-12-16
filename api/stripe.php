@@ -7,7 +7,7 @@ include_once "helper.php";
 $stripe_key = getenv("stripe_key");
 
 #request list of transactions
-$response = request("https://api.stripe.com/v1/charges?created[gte]=" . strtotime("today - 30 years"), "GET", $stripe_key);
+$response = request("https://api.stripe.com/v1/charges?created[gte]=" . strtotime("today - 30 days"), "GET", $stripe_key);
 
 if(@$response["error"]){
     file_put_contents("../logs/stripe_error.log", json_encode($response) . "\n\n", FILE_APPEND);
