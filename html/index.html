@@ -33,29 +33,72 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
         rel="stylesheet">
-
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <style>
         body{
-            padding:20px;
-            background:#333;
+            padding:10px;
+            background:#000;
             color:#ddd;
             font-family: "Roboto Flex", sans-serif;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            
         }
-        h1, h2{
+        section{
+            padding:20px;
+            margin:10px;
+            background:#333;
+            max-width:800px;
+        }
+        section:first-child{
+            text-align: center;
+        }
+        p{
+            margin:0;
+        }
+        img{
+            margin-top:20px;
+        }
+        h1{
+            margin:0;
+            margin-bottom:20px;
+            text-align: center;
             font-family: "DM Serif Text", serif;
+        }
+        label{
+            margin-right:10px;
         }
         input, button{
             font-family: inherit;
-            color:#333;
-            background:#ddd;
+            color:#ddd;
+            background:#000;
             border:none;
             padding: 10px 15px;
+        }
+        button{
+            background:#ddd;
+            color:#333;
+            cursor:pointer;
+        }
+        pre{
+            white-space: pre-wrap;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 500,
+                'GRAD' 0,
+                'opsz' 24;
+            vertical-align: middle;
+            padding-right:10px;
         }
     </style>
 </head>
 <body>
     <section>
-        <h1>Weather API</h1>
+        <h1><span class="material-symbols-outlined">cloud</span> Weather API</h1>
         <label>
             <input type="text" id="city" placeholder="City">
         </label>
@@ -66,7 +109,7 @@
         <p id="weather">...</p>
     </section>
     <section>
-        <h1>Employee API</h1>
+        <h1><span class="material-symbols-outlined">badge</span> Employee API</h1>
         <pre>
 Create user:
 curl http://localhost:8888/employees/ -XPOST -d '{"name":"Test","email":"testing@gmail.com","position":"TEST USER"}'
@@ -85,7 +128,7 @@ curl http://localhost:8888/employees/719229 -XDELETE
         </pre>
     </section>
     <section>
-        <h1>Stripe API</h1>
+        <h1><span class="material-symbols-outlined">payments</span> Stripe API</h1>
         <pre id="stripe_data">Loading...</pre>
         <script>
             const fetch_stripe = async () => {
