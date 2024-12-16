@@ -9,7 +9,8 @@ function error(int $code, string $message) {
     header('Content-Type: application/json');
     header("HTTP/1.1 $code $message");
     echo json_encode([
-        "error" => $message
+        "error" => $message,
+        "code" => $code
     ]);
     exit;
 }
