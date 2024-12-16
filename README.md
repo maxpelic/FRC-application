@@ -8,6 +8,7 @@ Read /api/README.md for the API documentation
 
     SetEnv geoapi_key b7ac32f76bee4abdb3709a5a9eab833b
     SetEnv weather_key 8d7e74e072bdfe8d80d694a44f010812
+    SetEnv stripe_key sk_test_...
 
     Listen *:8888
     <VirtualHost *:8888>
@@ -20,6 +21,10 @@ Read /api/README.md for the API documentation
                     Order allow,deny
                     Allow from all
                     Require all granted
+            </Directory>
+
+            <Directory "/site/root/api/employees">
+                FallbackResource "index.php"
             </Directory>
     </VirtualHost>
 

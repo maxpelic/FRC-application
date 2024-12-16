@@ -17,11 +17,17 @@ function error(int $code, string $message) {
 
 #make a CURL request to an API
 #add support for other types of requests (including JSON data) if needed
-function request(string $url, string $method = "GET"){
+function request(string $url, string $method = "GET", string|null $auth = null){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+
+    if($auth){
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: Bearer " . $auth
+        ]);
+    }
 
     $response = curl_exec($ch);
 
