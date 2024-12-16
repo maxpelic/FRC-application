@@ -34,4 +34,4 @@ echo json_encode([
     "total_amount" => $total / 100,
     "total_charges" => $count,
     "charges" => $transaction_data
-]);
+], JSON_PRETTY_PRINT);

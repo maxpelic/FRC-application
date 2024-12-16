@@ -6,6 +6,7 @@
     <script>
         const getWeather = async () => {
             const weatherElement = document.getElementById("weather");
+            weatherElement.style.color = "";
             weatherElement.textContent = "Fetching weather data, please wait...";
             const city = encodeURIComponent(document.getElementById("city").value);
             const state = encodeURIComponent(document.getElementById("state").value);
@@ -17,7 +18,6 @@
                 weatherElement.style.color = "red";
             } else {
                 weatherElement.textContent = "";
-                weatherElement.style.color = "black";
                 const icon = document.createElement("img");
                 icon.src = json.icon;
                 weatherElement.append(icon);
@@ -28,6 +28,30 @@
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body{
+            padding:20px;
+            background:#333;
+            color:#ddd;
+            font-family: "Roboto Flex", sans-serif;
+        }
+        h1, h2{
+            font-family: "DM Serif Text", serif;
+        }
+        input, button{
+            font-family: inherit;
+            color:#333;
+            background:#ddd;
+            border:none;
+            padding: 10px 15px;
+        }
+    </style>
 </head>
 <body>
     <section>
@@ -39,7 +63,38 @@
             <input type="text" id="state" placeholder="State">
         </label>
         <button onclick="getWeather()">Get Weather</button>
-        <p id="weather">Result will show up here</p>
+        <p id="weather">...</p>
+    </section>
+    <section>
+        <h1>Employee API</h1>
+        <pre>
+Create user:
+curl http://localhost:8888/employees/ -XPOST -d '{"name":"Test","email":"testing@gmail.com","position":"TEST USER"}'
+
+Update user:
+curl http://localhost:8888/employees/719229 -XPUT -d '{"name":"Test","email":"testing2@gmail.com","position":"TEST USER"}'
+
+List Users:
+curl http://localhost:8888/employees/
+
+View User:
+curl http://localhost:8888/employees/719229
+
+Delete User:
+curl http://localhost:8888/employees/719229 -XDELETE
+        </pre>
+    </section>
+    <section>
+        <h1>Stripe API</h1>
+        <pre id="stripe_data">Loading...</pre>
+        <script>
+            const fetch_stripe = async () => {
+                const response = await fetch("http://localhost:8888/stripe.php");
+                const data = await response.text();
+                document.getElementById("stripe_data").textContent = data;
+            }
+            fetch_stripe();
+        </script>
     </section>
 </body>
 </html>
